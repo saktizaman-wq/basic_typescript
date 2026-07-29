@@ -21,3 +21,24 @@ const orders = [
   { id: "ORD005", paid: false, stockAvailable: false },
   { id: "ORD006", paid: true, stockAvailable: true }
 ];
+
+let readyToShipCount = 0;
+let unpaidCount = 0;
+let waitingForStockCount = 0;
+let readyToShipOrders: string[] = [];
+
+orders.forEach((order) => {
+    if (order.paid && order.stockAvailable) {
+        readyToShipCount++;
+        readyToShipOrders.push(order.id);
+    } else if (!order.paid) {
+        unpaidCount++;
+    } else {
+        waitingForStockCount++;
+    }
+});
+
+console.log(`Orders Ready to Ship: ${readyToShipCount}`);
+console.log(`Unpaid Orders: ${unpaidCount}`);
+console.log(`Orders Waiting for Stock: ${waitingForStockCount}`);
+console.log(`Order IDs Ready to Ship: ${readyToShipOrders.join(", ")}`);

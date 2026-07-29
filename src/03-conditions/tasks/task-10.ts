@@ -45,3 +45,44 @@ Student Tasks
 - Use nested conditional statements.
 - Display the final registration result.
  */
+
+
+class Student {
+    name: string;
+    isActive: boolean;
+    tuitionPaid: boolean;
+    passedProgrammingFundamentals: boolean;
+    passedDatabaseSystems: boolean;
+    gpa: number;
+    seatsAvailable: boolean;
+
+    constructor(name: string, isActive: boolean, tuitionPaid: boolean, passedProgrammingFundamentals: boolean, passedDatabaseSystems: boolean, gpa: number, seatsAvailable: boolean) {
+        this.name = name;
+        this.isActive = isActive;
+        this.tuitionPaid = tuitionPaid;
+        this.passedProgrammingFundamentals = passedProgrammingFundamentals;
+        this.passedDatabaseSystems = passedDatabaseSystems;
+        this.gpa = gpa;
+        this.seatsAvailable = seatsAvailable;
+    }
+
+    getRegistrationResult(): string {
+        if (!this.isActive || !this.tuitionPaid) {
+            return "Registration Rejected";
+        }
+
+        if (!this.passedProgrammingFundamentals || !this.passedDatabaseSystems || this.gpa < 3.20) {
+            return "Academic Requirements Not Met";
+        }
+
+        if (this.seatsAvailable) {
+            return "Registration Successful";
+        } else {
+            return "Added to Waiting List";
+        }
+    }
+}
+
+let student1 = new Student("Nadia Putri", true, true, true, true, 3.45, false);
+console.log(`Student: ${student1.name}`);
+console.log(`Registration Result: ${student1.getRegistrationResult()}`);

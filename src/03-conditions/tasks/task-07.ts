@@ -30,3 +30,36 @@
  * 2. Implement both screening stages.
  * 3. Display the loan decision.
  */
+
+
+class LoanApplicant {
+    name: string;
+    monthlyIncome: number;
+    creditScore: number;
+    existingDebt: number;
+    isPermanentEmployee: boolean;
+    loanDecision: string;
+
+    constructor(name: string, monthlyIncome: number, creditScore: number, existingDebt: number, isPermanentEmployee: boolean) {
+        this.name = name;
+        this.monthlyIncome = monthlyIncome;
+        this.creditScore = creditScore;
+        this.existingDebt = existingDebt;
+        this.isPermanentEmployee = isPermanentEmployee;
+        this.loanDecision = "";
+    }
+
+    getLoanDecision(): string {
+        const firstScreeningPassed = this.monthlyIncome >= 8000000 && this.creditScore >= 700;
+        const secondScreeningPassed = this.existingDebt <= (0.3 * this.monthlyIncome) && this.isPermanentEmployee;
+
+        this.loanDecision = firstScreeningPassed ? (secondScreeningPassed ? "Loan Approved" : "Manual Review") : "Loan Rejected";
+
+        return this.loanDecision;
+    }
+}
+
+let applicant1 = new LoanApplicant("Andi Wijaya", 10000000, 725, 2500000, true);
+applicant1.getLoanDecision();
+console.log(`Applicant: ${applicant1.name}`);
+console.log(`Loan Decision: ${applicant1.loanDecision}`);

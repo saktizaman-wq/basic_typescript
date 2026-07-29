@@ -23,3 +23,45 @@
  * 2. Implement the hospital workflow using conditional statements.
  * 3. Display the patient's destination.
  */
+
+
+class Patient {
+    name: string;
+    isCriticalCondition: boolean;
+    hasAppointment: boolean;
+    age: number;
+    hasInsurance: boolean;
+    destination: string;
+
+    constructor(name: string, isCriticalCondition: boolean, hasAppointment: boolean, age: number, hasInsurance: boolean) {
+        this.name = name;
+        this.isCriticalCondition = isCriticalCondition;
+        this.hasAppointment = hasAppointment;
+        this.age = age;
+        this.hasInsurance = hasInsurance;
+        this.destination = "";
+    }
+
+    assignDestination(): string {
+        if (this.isCriticalCondition) {
+            this.destination = "Emergency Room";
+        } else if (this.hasAppointment) {
+            if (this.age >= 60) {
+                this.destination = "Priority Queue";
+            } else {
+                this.destination = "Regular Queue";
+            }
+        } else {
+            if (this.hasInsurance) {
+                this.destination = "Insurance Registration Counter";
+            } else {
+                this.destination = "General Registration Counter";
+            }
+        }
+        return this.destination;
+    }
+}
+
+let patient1 = new Patient("Siti Rahma", false, true, 67, true);
+patient1.assignDestination();
+console.log(`Patient Name: ${patient1.name} is heading to: ${patient1.destination}`);

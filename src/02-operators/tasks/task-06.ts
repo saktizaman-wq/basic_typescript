@@ -13,3 +13,47 @@
  * - Discount amount
  * - Final payment
  */
+
+class InternetCafeBilling {
+  private RATE_PER_HOUR: number = 8000;
+  private DISCOUNT_THRESHOLD: number = 5;
+  private DISCOUNT_VALUE: number = 0.15;
+
+  constructor(private hours: number, private minutes: number) {}
+
+  public get totalPlayingTimeInMinutes(): number {
+    return this.hours * 60 + this.minutes;
+  }
+
+  public get remainingMinutesAfterFullHours(): number {
+    return this.totalPlayingTimeInMinutes % 60;
+  }
+
+  public get totalBilledHours(): number {
+    return Math.ceil(this.totalPlayingTimeInMinutes / 60);
+  }
+
+  public get RawtotalPayment(): number {
+    return this.totalBilledHours * this.RATE_PER_HOUR;
+  }
+
+  public get discountAmount(): number {
+    return this.totalBilledHours > this.DISCOUNT_THRESHOLD
+      ? this.RawtotalPayment * this.DISCOUNT_VALUE
+      : 0;
+  }
+  public get finalPayment(): number {
+    return this.RawtotalPayment - this.discountAmount;
+  }
+
+    public printBillingDetails(): void {
+        console.log("Total Playing Time:", this.hours, "hours ", this.minutes, "minutes");
+        console.log("Remaining Minutes after Full Hours:", this.remainingMinutesAfterFullHours);
+        console.log("Total Billed Hours:", this.totalBilledHours);
+        console.log("Total Payment before Discount:", this.RawtotalPayment);
+        console.log("Discount Amount:", this.discountAmount);
+        console.log("Final Payment:", this.finalPayment);
+    }};
+
+    let billing1 = new InternetCafeBilling(7, 35);
+    billing1.printBillingDetails();

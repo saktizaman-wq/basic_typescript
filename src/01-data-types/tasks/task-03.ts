@@ -9,3 +9,18 @@
  * 
  * display the student data using console.log.
  */
+
+class student {
+  constructor(public name: string, 
+  public studentId: string,
+  public age: number,
+  public isActive: boolean) {}
+}
+
+
+const studentNadia = new student("Nadia Putri", "ST2026045", 20, true);
+
+console.log(`Student Name: ${studentNadia.name}`);
+console.log(`Student ID: ${studentNadia.studentId}`);
+console.log(`Age: ${studentNadia.age}`);
+console.log(`Is Active: ${studentNadia.isActive}`);

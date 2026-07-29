@@ -14,3 +14,45 @@
  * 4. Declare all variables in TypeScript.
  * 5. Display the product data using console.log.
  */
+
+class Product {
+  constructor(
+    public productName: string,
+    public productCode: string,
+    public originalPrice: number,
+    public discountPercentage: number,
+    public currentStock: number
+  ) {}
+
+  getDiscountedPrice(): number {
+    const discountAmount = (this.originalPrice * this.discountPercentage) / 100;
+    return this.originalPrice - discountAmount;
+  }
+}
+
+class Order {
+  constructor(
+    public product: Product,
+    public quantity: number,
+    public isPremiumMember: boolean
+  ) {}
+
+  placeOrder(): void {
+    this.product.currentStock -= this.quantity;
+  }
+}
+
+const flashSaleProduct = new Product("Mechanical Keyboard RGB", "KBR-001", 850000, 25, 18);
+const flashSaleOrder = new Order(flashSaleProduct, 2, true);
+const discountedPrice = flashSaleOrder.product.getDiscountedPrice();
+
+flashSaleOrder.placeOrder();
+
+console.log(`Product Name: ${flashSaleOrder.product.productName}`);
+console.log(`Product Code: ${flashSaleOrder.product.productCode}`);
+console.log(`Original Price: ${flashSaleOrder.product.originalPrice}`);
+console.log(`Discount Percentage: ${flashSaleOrder.product.discountPercentage}%`);
+console.log(`Quantity: ${flashSaleOrder.quantity}`);
+console.log(`Is Premium Member: ${flashSaleOrder.isPremiumMember}`);
+console.log(`Current Stock: ${flashSaleOrder.product.currentStock}`);
+console.log(`Discounted Price: ${discountedPrice}`);

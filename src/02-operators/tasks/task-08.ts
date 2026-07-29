@@ -24,3 +24,42 @@
  * - Final bill
  * - Green Energy Program eligibility
  */
+
+
+class SmartHome {
+    previousMeter: number;
+    currentMeter: number;
+    solarPanelInstalled: boolean;
+    energySavingMode: boolean;
+    electricityUsage: number;
+    pricePerKWh: number = 1650;
+    IsGreenEnergyProgramEligible: boolean = false;
+    ElectricityBill: number = 0;
+
+    constructor(previousMeter: number, currentMeter: number, solarPanelInstalled: boolean, energySavingMode: boolean) {
+        this.previousMeter = previousMeter;
+        this.currentMeter = currentMeter;
+        this.electricityUsage = currentMeter - previousMeter;
+        this.solarPanelInstalled = solarPanelInstalled;
+        this.energySavingMode = energySavingMode;
+        this.IsGreenEnergyProgramEligible = this.solarPanelInstalled && this.electricityUsage < 300 && this.energySavingMode;
+    }
+
+    calculateElectricityBill(): number {
+        let bill = this.electricityUsage * this.pricePerKWh;
+        this.solarPanelInstalled ? bill *= 0.8 : null;
+        this.energySavingMode ? bill *= 0.95 : null;
+        this.ElectricityBill = bill;
+        return bill;
+    }
+
+    printBill(): void {
+        console.log(`Electricity Usage: ${this.electricityUsage} kWh`);
+        console.log(`Electricity Bill: Rp ${this.ElectricityBill}`);
+        console.log(`Green Energy Program Eligibility: ${this.IsGreenEnergyProgramEligible ? 'Eligible' : 'Not Eligible'}`);
+    }
+};
+
+
+let home1 = new SmartHome(500000, 350000, true, false);
+home1.printBill();

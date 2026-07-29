@@ -21,3 +21,17 @@
  * 2. Store the temperature data in a single collection.
  * 3. Display the temperature data using console.log.
  */
+
+type TemperatureReading = {
+  time: string;
+  temperature: number;
+};
+
+let temperatureReadings: TemperatureReading[] = [
+  { time: "08:00", temperature: 24.5 },
+  { time: "09:00", temperature: 25.1 },
+]
+
+temperatureReadings.forEach(temp => {
+  console.log(`Time: ${temp.time}, Temperature: ${temp.temperature}°C`);
+});

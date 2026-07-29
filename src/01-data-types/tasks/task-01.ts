@@ -14,3 +14,27 @@
  * 3. Create the variable declarations using TypeScript.
  * 4. Display the student data using console.log.
  */
+
+
+
+
+class studentGrade {
+  constructor(public name: string, 
+  public studentId: string,
+  public assignments: number,
+  public midtermExam: number,
+  public finalExam: number,
+  public attendance: number,
+  public extracurricular: boolean) {}
+}
+
+
+const studentNadia = new studentGrade("Nadia Putri", "ST2026045", 88.5, 84, 91.5, 100, true);
+
+console.log(`Student Name: ${studentNadia.name}`);
+console.log(`Student ID: ${studentNadia.studentId}`);
+console.log(`Assignments Score: ${studentNadia.assignments}`);
+console.log(`Midterm Exam Score: ${studentNadia.midtermExam}`);
+console.log(`Final Exam Score: ${studentNadia.finalExam}`);
+console.log(`Attendance Score: ${studentNadia.attendance}`);
+console.log(`Extracurricular Activities: ${studentNadia.extracurricular}`);

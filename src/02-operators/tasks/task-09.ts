@@ -34,3 +34,68 @@
  * - Free shipping eligibility
 
  */
+
+class Product {
+    name: string;
+    price: number;
+    quantity: number;
+
+    constructor(name: string, price: number, quantity: number) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+}
+
+class Customer {
+    name: string;
+    voucherEligibility: boolean;
+    isPremiumMember: boolean;
+
+    constructor(name: string, isPremiumMember: boolean, voucherEligibility: boolean) {
+        this.name = name;
+        this.isPremiumMember = isPremiumMember;
+        this.voucherEligibility = voucherEligibility;
+    }
+}
+
+
+class Checkout {
+    boughtProducts: Product[];
+    customer: Customer;
+    rewardPointRate: number = 50000;
+    vatRate: number = 0.11;
+    isFreeShippingEligible: boolean = false;
+    productSubtotal: number = 0;
+    membershipDiscount: number = 0;
+    voucherDeduction: number = 0;
+    paymentBeforeTax: number = 0;
+    vatPayment: number = 0;
+    finalPayment: number = 0;
+    rewardPointsGained: number = 0;
+
+    constructor(products: Product[], customer: Customer) {
+        this.boughtProducts = products;
+        this.customer = customer;
+        this.productSubtotal = this.boughtProducts.reduce((total, product) => total + (product.price * product.quantity), 0);
+        this.membershipDiscount = this.customer.isPremiumMember ? this.productSubtotal * 0.1 : 0;
+        this.voucherDeduction = this.customer.voucherEligibility ? 100000 : 0;
+        this.paymentBeforeTax = this.productSubtotal - this.membershipDiscount - this.voucherDeduction;
+        this.vatPayment = this.paymentBeforeTax * this.vatRate;
+        this.finalPayment = this.paymentBeforeTax + this.vatPayment;
+        this.rewardPointsGained = Math.floor(this.paymentBeforeTax / this.rewardPointRate);
+        this.isFreeShippingEligible = this.customer.isPremiumMember || (this.paymentBeforeTax > 1500000);
+    }
+
+    printCheckoutSummary(): void {
+        console.log(`Product Subtotal: Rp ${this.productSubtotal}`);
+        console.log(`Membership Discount: Rp ${this.membershipDiscount}`);
+        console.log(`Voucher Deduction: Rp ${this.voucherDeduction}`);
+        console.log(`Payment Before Tax: Rp ${this.paymentBeforeTax}`);
+        console.log(`VAT Payment: Rp ${this.vatPayment}`);
+        console.log(`Final Payment: Rp ${this.finalPayment}`);
+        console.log(`Reward Points Gained: ${this.rewardPointsGained} points`);
+        console.log(`Free Shipping Eligibility: ${this.isFreeShippingEligible ? 'Eligible' : 'Not Eligible'}`);
+    }
+}
+    
