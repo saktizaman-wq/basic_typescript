@@ -22,3 +22,34 @@
  * 2. Implement the logic using nested if statements.
  * 3. Display the reservation result.
  */
+
+
+class Reservation {
+  customerName: string;
+  isPremiumMember: boolean;
+  isRoomAvailable: boolean;
+
+
+  constructor(customerName: string, isPremiumMember: boolean, isRoomAvailable: boolean) {
+    this.customerName = customerName;
+    this.isPremiumMember = isPremiumMember;
+    this.isRoomAvailable = isRoomAvailable;
+  }
+
+  getReservationResult(): string {
+    if (this.isRoomAvailable) {
+      if (this.isPremiumMember) {
+        return `Hello ${this.customerName}, your room is available and you have received a free room upgrade!`;
+      }
+      return `Hello ${this.customerName}, your room is available and you have reserved a standard room.`;
+    } else {
+      if (this.isPremiumMember) {
+        return `Hello ${this.customerName}, unfortunately no rooms are available. As a premium member, you have been placed on the priority waiting list.`;
+      }
+      return `Hello ${this.customerName}, unfortunately no rooms are available.`;
+    }
+  }
+}
+
+let reservation = new Reservation("Nadia Putri", true, false);
+console.log(reservation.getReservationResult());

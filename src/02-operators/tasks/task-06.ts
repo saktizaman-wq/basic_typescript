@@ -56,4 +56,6 @@ class InternetCafeBilling {
     }};
 
     let billing1 = new InternetCafeBilling(7, 35);
+    let billing2 = new InternetCafeBilling(10, 30);
     billing1.printBillingDetails();
+    billing2.printBillingDetails();

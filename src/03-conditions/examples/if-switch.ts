@@ -47,3 +47,4 @@ if (score >= 60) {
 } else {
   console.log("Failed — keep practicing!");
 }
+

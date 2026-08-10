@@ -22,3 +22,23 @@
  *  - Display every parking location.
  *  - Print a blank line after each floor.
  */
+type filledSlots = {
+    slot: number;
+    floor: number;
+}
+
+let filledSlots: filledSlots[] = [
+    { slot: 1, floor: 1 },
+    { slot: 2, floor: 1 },
+]
+for (let floor = 1; floor <= 5; floor++) {
+    for (let slot = 1; slot <= 20; slot++) {
+        let isFilled = filledSlots.some((filledSlot) => filledSlot.floor === floor && filledSlot.slot === slot);
+        if (isFilled) {
+            console.log(`Floor ${floor} - Slot ${slot} (Filled)`);
+        } else {
+            console.log(`Floor ${floor} - Slot ${slot}`);
+        }
+    }
+    console.log();
+}

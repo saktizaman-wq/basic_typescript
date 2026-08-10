@@ -16,14 +16,14 @@
  */
 
 const submissions = [
-    { student: "Alya", submitted: true, score: 92 },
-    { student: "Budi", submitted: false, score: 0 },
-    { student: "Citra", submitted: true, score: 78 },
-    { student: "Dimas", submitted: true, score: 65 },
-    { student: "Eka", submitted: false, score: 0 },
-    { student: "Fajar", submitted: true, score: 84 },
-    { student: "Gita", submitted: true, score: 90 },
-    { student: "Hana", submitted: true, score: 73 }
+    { student: "Atha", submitted: true, score: 92 },
+    { student: "Soni", submitted: false, score: 0 },
+    { student: "Bayu", submitted: true, score: 78 },
+    { student: "Agus", submitted: true, score: 65 },
+    { student: "Sakti", submitted: false, score: 0 },
+    { student: "Maha", submitted: true, score: 84 },
+    { student: "Yana", submitted: true, score: 90 },
+    { student: "Zaman", submitted: true, score: 73 }
 ];
 
 let submittedCount = 0;
@@ -55,3 +55,7 @@ let classAverage = totalScore / submittedCount;
 console.log(`Students Who Submitted: ${submittedCount}`);
 console.log(`Students Who Did Not Submit: ${notSubmittedCount}`);
 console.log(`Students Who Passed: ${passedCount}`);
+console.log(`Students Who Must Revise: ${reviseCount}`);
+console.log(`Class Average Score: ${classAverage.toFixed(2)}`);
+console.log(`Names of Students Who Did Not Submit: ${notSubmittedStudents.join(", ")}`);
+console.log(`Names of Students Who Must Revise: ${reviseStudents.join(", ")}`);
