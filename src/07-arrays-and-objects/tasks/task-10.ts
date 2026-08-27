@@ -121,10 +121,3 @@ submissions.forEach(submission => {
 
 
 console.log("Students with Scores:", studentsWithScores);
-console.log("Average Score:", averageScore);
-console.log("Highest Score:", highestScore);
-console.log("Lowest Score:", lowestScore);
-console.log("Passed Students:", passedStudents);
-console.log("Failed Students:", failedStudents);
-console.log("Pass Rate:", passRate);
-console.log("Scores by Category:", scoresByCategory);
