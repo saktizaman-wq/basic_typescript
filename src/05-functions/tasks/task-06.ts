@@ -12,8 +12,6 @@
  * Create the following functions:
  */
 
-<<<<<<< HEAD
-=======
 const sales = [
   125000,
   780000,
@@ -26,9 +24,6 @@ const sales = [
   310000,
   820000
 ];
-
-function calculateTotalSales(sales: number[]): number {
->>>>>>> upstream/main
 
 let dailySales: number[] = [250000, 500000, 750000, 1000000, 1250000, 1500000, 1750000, 2000000];
 

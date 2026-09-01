@@ -28,19 +28,3 @@ const scores = [
   79,
   97
 ];
-
-function findHighestScore(scores: number[]): number {
-
-}
-
-function findLowestScore(scores: number[]): number {
-
-}
-
-function calculateAverage(scores: number[]): number {
-    
-}
-
-function countPassedStudents(scores: number[]): number {
-
-}
